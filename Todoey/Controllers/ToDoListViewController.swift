@@ -10,12 +10,25 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
 
-    var itemArray = ["Find Mike", "Buy eggs", "Eat meat"]
+    var itemArray = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let newItem = Item()
+        newItem.title = "Find Mike"
+        newItem.done = true
+        itemArray.append(newItem)
         
+        let newItem2 = Item()
+        newItem2.title = "Hello Frank"
+        newItem2.done = false
+        itemArray.append(newItem2)
+        
+        let newItem3 = Item()
+        newItem3.title = "Buy Charlie"
+        newItem3.done = false
+        itemArray.append(newItem3)
     }
 
 
@@ -29,7 +42,11 @@ class ToDoListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        let item = itemArray[indexPath.row]
+        
+        cell.textLabel?.text = item.title
+        
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
     }
@@ -38,13 +55,9 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //print(itemArray[indexPath.row])
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-       if tableView.cellForRow(at: indexPath)?.accessoryType != .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -58,9 +71,10 @@ class ToDoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            print(textField.text)
-            // error check here but we want to leave it for now
-            self.itemArray.append(textField.text!)
+            
+            let newItem = Item()
+            newItem.title = textField.text!
+            self.itemArray.append(newItem)
             
             self.tableView.reloadData()
         }
