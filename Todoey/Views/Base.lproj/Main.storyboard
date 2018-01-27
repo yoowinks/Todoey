@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Items-->
+        <!--Author-->
         <scene sceneID="1HP-Qh-VLA">
             <objects>
                 <tableViewController id="K0u-ZG-D79" customClass="ToDoListViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItemCell" id="S8W-wm-PAy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="S8W-wm-PAy" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S8W-wm-PAy" id="qHh-oF-VwR">
@@ -39,14 +39,16 @@
                             <outlet property="delegate" destination="K0u-ZG-D79" id="jPx-wh-url"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" id="c18-tw-Iky">
+                    <navigationItem key="navigationItem" title="Author" id="c18-tw-Iky">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rtM-wi-Lmg">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="K0u-ZG-D79" id="d18-kq-rKU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="B9c-EY-se5" id="sKu-bo-PBM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMh-lg-wWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,11 +59,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ssa-ci-216" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lsk-da-BAD">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Lsk-da-BAD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.21960784310000001" green="0.59215686270000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
@@ -74,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="401" y="117"/>
         </scene>
-        <!--Todoey-->
+        <!--Quotes-->
         <scene sceneID="mHT-ah-MN3">
             <objects>
                 <tableViewController id="0oy-jF-lYJ" customClass="CategoryTableViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="iQO-aS-aKn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="iQO-aS-aKn" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iQO-aS-aKn" id="GMF-zo-ror">
@@ -97,9 +102,8 @@
                             <outlet property="delegate" destination="0oy-jF-lYJ" id="ctt-4z-ahZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="sH6-v8-PaC">
+                    <navigationItem key="navigationItem" title="Quotes" id="sH6-v8-PaC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I48-Cg-Ca9">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="0oy-jF-lYJ" id="eeA-62-tE9"/>
                             </connections>
